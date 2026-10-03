@@ -1,0 +1,16 @@
+# REKT.news retry pass 01 — first-wave fetch failures (retried 2026-10-03)
+
+Retry of the 86 slugs recorded as first-wave fetch failures in batch-02 / batch-08 / batch-09 / batch-10
+(list: `/tmp/rekt-retry/slugs.txt`). Protocol per slug: live fetch with 2 retries (2s delay) → Wayback Machine
+(`https://web.archive.org/web/2024/https://rekt.news/<slug>/`, up to 3 attempts) → archive.org availability API.
+Result: the live site still returns the Vercel 500 page (3120 bytes) for all 86 slugs; exactly one slug,
+`/bZx-rekt/`, has a Wayback snapshot of a real article. 1 card written below; the other 85 slugs have no
+Wayback capture under those names and remain dead — they are reported as failures (the wave-1 "transient
+500" hypothesis holds only for bZx; the other 85 are stale/non-canonical slugs with no archived article).
+
+## bZx — 2021-11-05 — ~$55M
+- Chain/Attack vector: Polygon + BSC protocol deployments (stolen BZRX later bridged to Ethereum and posted as collateral to borrow other assets); private-key compromise via spear-phishing — no smart-contract flaw.
+- Root cause: A bZx developer opened a phishing email attachment — a Word document with a malicious macro — on his personal computer; the macro ran a script that exfiltrated his wallet mnemonic. That personal EOA held admin control over bZx's Polygon and BSC deployments, so a single personal-wallet breach handed the attacker full control of both protocol deployments.
+- Mechanics: The attacker used the compromised key to seize the contracts and drain their BZRX, then updated the contract code to extract tokens from any wallet that had granted approvals to the affected contracts. To sidestep the liquidity problem of dumping a huge BZRX stack, the stolen BZRX was sent to Ethereum and used as collateral to borrow a variety of other assets. SlowMist's running total reached ~$55M; bZx asked Circle to freeze the stolen USDC (USDT held on Binance was frozen quickly) and offered the hacker to "chat and reach an agreement".
+- Lesson: (1) Production admin keys must never live on a personal device/EOA — any single key controlling protocol deployments is a full-drain primitive; enforce hardware wallets, multisigs and key separation for everyone with admin roles. (2) A compromised admin key converts instantly into a mass-drain of every user with standing token approvals — treat admin-key hygiene and approval-revocation UX as first-class audit findings, and treat any contract upgrade right after a key theft as a red flag.
+- REKT narrative extras: bZx's fourth incident — the February 2020 double exploits ($298k + $645k, the first flash-loan attacks in DeFi) and September 2020's $8M (later returned) — and its debut leaderboard entry went straight into the top 10. The initial announcement ("private key controlling the Polygon and BSC deployments was compromised") drew exasperation rather than shock ("Y'all ngmi"); rekt's verdict: human error should never have been able to cause such a loss, but blame also lies with the protocol for single-EOA control. The team's preliminary post-mortem listed the attacker's address lists across Polygon, BSC and Ethereum. (Recovered via Wayback Machine snapshot 2025-01-23 of https://rekt.news/bZx-rekt/ — live slug still returns HTTP 500.)
