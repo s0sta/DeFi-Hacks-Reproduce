@@ -251,3 +251,38 @@ html[data-theme="dark"]{color-scheme:dark}
 
 /* theme button on the LEFT, next to the brand */
 .nav-left{display:flex;align-items:center;gap:10px}
+
+/* ===== dark theme safety net (every component explicitly) ===== */
+html[data-theme="dark"] .stat,
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .intel-card,
+html[data-theme="dark"] .pattern-card,
+html[data-theme="dark"] .meth-card,
+html[data-theme="dark"] .chart-block,
+html[data-theme="dark"] .sum-card,
+html[data-theme="dark"] .feature-card,
+html[data-theme="dark"] .week-card,
+html[data-theme="dark"] .modal{background:var(--surface);border-color:var(--border)}
+html[data-theme="dark"] .controls input,
+html[data-theme="dark"] .controls select,
+html[data-theme="dark"] .chip,
+html[data-theme="dark"] .cat-tab,
+html[data-theme="dark"] .theme-btn,
+html[data-theme="dark"] .nav-toggle,
+html[data-theme="dark"] .modal-close{background:var(--surface);color:var(--text);border-color:var(--border-strong)}
+html[data-theme="dark"] .kicker,
+html[data-theme="dark"] .badge.class,
+html[data-theme="dark"] .intel-count{background:var(--violet-soft);color:var(--violet)}
+html[data-theme="dark"] .link-row{border-color:var(--border)}
+html[data-theme="dark"] .l-name{color:var(--text)}
+html[data-theme="dark"] .link-row:hover .l-name{color:var(--violet)}
+html[data-theme="dark"] footer.site-foot,
+html[data-theme="dark"] .nav-links{background:var(--surface);border-color:var(--border)}
+html[data-theme="dark"] .pat-checks li code{color:#7dd3fc;background:#0e1320;border-color:var(--border)}
+html[data-theme="dark"] .modal-body p{color:var(--text-2)}
+html[data-theme="dark"] .excerpt,
+html[data-theme="dark"] .pat-why,
+html[data-theme="dark"] .meth-card p,
+html[data-theme="dark"] .prose p,
+html[data-theme="dark"] .prose li{color:var(--text-2)}
