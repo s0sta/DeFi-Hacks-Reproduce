@@ -6,17 +6,15 @@
 <title>s0sta — DeFi Exploit Research Archive</title>
 <meta name="description" content="Professional DeFi exploit research archive: 832 documented incidents (2017–2026) with root causes, mechanics and lessons — plus pre-audit checklists and bug patterns.">
 <meta property="og:title" content="s0sta — DeFi Exploit Research Archive">
-<meta property="og:description" content="Professional DeFi exploit research archive: 832 documented incidents (2017–2026) with root causes, mechanics and lessons — plus pre-audit checklists and bug patterns.">
+<meta property="og:description" content="832 documented DeFi exploits with root causes, mechanics and lessons — plus pre-audit checklists and bug patterns.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://s0sta.com/DeFi-Hacks-Reproduce/index.html">
+<meta property="og:url" content="https://s0sta.com/DeFi-Hacks-Reproduce/">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="home">
 <header class="site-head"><div class="wrap">
   <nav class="nav">
     <a class="brand" href="index.html"><span class="bolt">⚡</span>s0sta<span class="slash">/</span>research</a>
-    <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">🌙</button>
-    <button class="nav-toggle" id="nav-toggle">☰</button>
     <div class="nav-links">
       <a href="index.html" data-page="home">Home</a>
       <a href="database.html" data-page="database">Database</a>
@@ -27,47 +25,98 @@
       <a href="methodology.html" data-page="methodology">Methodology</a>
       <a href="about.html" data-page="about">About</a>
     </div>
+    <div class="nav-actions">
+      <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      <button class="nav-toggle" id="nav-toggle">☰</button>
+    </div>
   </nav>
 </div></header>
+
 <main class="wrap">
-<div class="page-hero">
-  <span class="kicker">DeFi Exploit Research · 2017–2026</span>
-  <h1>The DeFi Exploit<br><span class="grad">Research Archive</span></h1>
-  <p class="lead">Eight years of loss events, reduced to first principles — every incident's root cause, mechanics, and the lesson that stops the next one.</p>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num" id="stat-incidents">—</div><div class="stat-label">Incidents</div></div>
-    <div class="stat"><div class="stat-num" id="stat-analyses">—</div><div class="stat-label">Deep-dive Analyses</div></div>
-    <div class="stat"><div class="stat-num" id="stat-years">—</div><div class="stat-label">Years Covered</div></div>
-    <div class="stat"><div class="stat-num" id="stat-classes">—</div><div class="stat-label">Root-cause Classes</div></div>
+  <div class="page-hero">
+    <span class="kicker">DeFi Exploit Research · 2017 – 2026</span>
+    <h1>The complete DeFi<br><span class="grad">exploit research archive</span></h1>
+    <p class="lead">832 documented hacks — every one reduced to its root cause, its exact mechanics, and the lesson that stops the next one. Built for auditors, bug hunters, and protocol teams.</p>
+    <div class="cta-row">
+      <a class="btn" href="database.html">Explore the database</a>
+      <a class="btn ghost" href="checklists.html">Pre-audit checklists</a>
+      <a class="btn ghost" href="analytics.html">Loss analytics</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="stat-incidents">—</div><div class="stat-label">Incidents</div></div>
+      <div class="stat"><div class="stat-num" id="stat-analyses">—</div><div class="stat-label">Deep-dive Analyses</div></div>
+      <div class="stat"><div class="stat-num" id="stat-years">—</div><div class="stat-label">Years Covered</div></div>
+      <div class="stat"><div class="stat-num" id="stat-classes">—</div><div class="stat-label">Root-cause Classes</div></div>
+    </div>
   </div>
-  <div id="week-slot"></div>
-</div>
-<div class="home-grid">
-  <div class="panel"><h2>Explore the archive</h2><p class="panel-sub">Six curated views into the research.</p>
-    <a class="link-row" href="database.html"><div><div class="l-name">Incident Database</div><div class="l-desc">Search and filter all incidents</div></div><span class="l-go">→</span></a>
-    <a class="link-row" href="intelligence.html"><div><div class="l-name">Attack-Class Intelligence</div><div class="l-desc">Losses and frequency per root-cause class</div></div><span class="l-go">→</span></a>
-    <a class="link-row" href="checklists.html"><div><div class="l-name">Pre-Audit Checklists</div><div class="l-desc">Exact root causes per protocol category</div></div><span class="l-go">→</span></a>
-    <a class="link-row" href="patterns.html"><div><div class="l-name">Bug Patterns</div><div class="l-desc">The 10 canonical shapes + their greps</div></div><span class="l-go">→</span></a>
-    <a class="link-row" href="analytics.html"><div><div class="l-name">Loss Analytics</div><div class="l-desc">Losses by class, chain and year</div></div><span class="l-go">→</span></a>
-    <a class="link-row" href="methodology.html"><div><div class="l-name">Methodology</div><div class="l-desc">How s0sta audits</div></div><span class="l-go">→</span></a>
-  </div>
-  <div class="panel"><h2>At a glance</h2><p class="panel-sub">The archive in numbers.</p>
-    <div class="link-row"><div class="l-name">Deep-dive analyses</div><span class="l-go" id="glance-analyses">—</span></div>
-    <div class="link-row"><div class="l-name">Landmark hacks ranked</div><span class="l-go">Top 60</span></div>
-    <div class="link-row"><div class="l-name">Bug patterns</div><span class="l-go" id="glance-patterns">—</span></div>
-    <div class="link-row"><div class="l-name">Protocol categories</div><span class="l-go" id="glance-cats">—</span></div>
-  </div>
-</div>
+
+  <section class="section" id="whats-inside">
+    <div class="section-head"><h2>Everything inside</h2><p>Seven tools, one archive.</p></div>
+    <div class="feature-grid">
+      <a class="feature-card" href="database.html">
+        <span class="f-icon">🗂</span><h3>Incident Database</h3>
+        <p>Search and filter all 832 incidents by protocol, class, chain and year.</p>
+        <span class="f-go">Open →</span>
+      </a>
+      <a class="feature-card" href="intelligence.html">
+        <span class="f-icon">📊</span><h3>Attack-Class Intelligence</h3>
+        <p>Losses and frequency per root-cause class — where the money went.</p>
+        <span class="f-go">Open →</span>
+      </a>
+      <a class="feature-card" href="checklists.html">
+        <span class="f-icon">✅</span><h3>Pre-Audit Checklists</h3>
+        <p>The exact root causes that killed each protocol category, with checks.</p>
+        <span class="f-go">Open →</span>
+      </a>
+      <a class="feature-card" href="patterns.html">
+        <span class="f-icon">🧩</span><h3>10 Canonical Bug Patterns</h3>
+        <p>The recurring shapes behind most exploits — with the grep that finds them.</p>
+        <span class="f-go">Open →</span>
+      </a>
+      <a class="feature-card" href="analytics.html">
+        <span class="f-icon">📈</span><h3>Loss Analytics</h3>
+        <p>Reported losses by class, by chain, and incidents per year.</p>
+        <span class="f-go">Open →</span>
+      </a>
+      <a class="feature-card" href="methodology.html">
+        <span class="f-icon">🔬</span><h3>Methodology</h3>
+        <p>The five-gate discipline, fork-proof falsification, and the money map.</p>
+        <span class="f-go">Open →</span>
+      </a>
+      <a class="feature-card" href="about.html">
+        <span class="f-icon">ℹ️</span><h3>About the archive</h3>
+        <p>How the research was compiled and how to use it for audits.</p>
+        <span class="f-go">Open →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="featured">
+    <div class="section-head"><h2>Largest hacks, analysed</h2><a class="view-all" href="database.html?type=analysis">View all deep-dives →</a></div>
+    <div class="grid" id="featured-cards"></div>
+  </section>
+
+  <section class="section" id="latest">
+    <div class="section-head"><h2>Latest additions</h2><a class="view-all" href="database.html">Open the database →</a></div>
+    <div class="grid" id="latest-cards"></div>
+  </section>
+
+  <section class="section" id="week">
+    <div id="week-slot"></div>
+  </section>
 </main>
+
 <footer class="site-foot"><div class="wrap foot-inner">
   <div><span class="f-brand">⚡ s0sta/research</span></div>
   <div class="foot-links"><a href="about.html">About</a><a href="methodology.html">Methodology</a><a href="https://github.com/s0sta/DeFi-Hacks-Reproduce">Repository</a></div>
   <div class="f-meta">© <span id="foot-year"></span> s0sta · DeFi Exploit Research Archive</div>
 </div></footer>
+
 <div class="modal-backdrop" id="modal" hidden>
   <div class="modal"><button class="modal-close" id="modal-close">✕</button>
   <div class="modal-badges" id="modal-badges"></div><h3 id="modal-title"></h3><div class="modal-body" id="modal-body"></div></div>
 </div>
+
 <script src="assets/data.js"></script>
 <script src="assets/features.js"></script>
 <script src="assets/core.js"></script>

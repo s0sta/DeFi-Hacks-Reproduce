@@ -210,3 +210,18 @@ html[data-theme="dark"] .badge.year{background:rgba(255,255,255,.07)}
 html[data-theme="dark"] .pat-checks li code,
 html[data-theme="dark"] .modal-body .mech{background:#0e1320;border-color:var(--border)}
 html[data-theme="dark"] .meter,html[data-theme="dark"] .bar-track{background:#0e1320}
+
+/* ---------- home landing additions ---------- */
+.cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn.ghost{background:var(--surface);border:1px solid var(--border-strong);color:var(--text);box-shadow:var(--shadow)}
+.btn.ghost:hover{border-color:var(--violet);color:var(--violet)}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.feature-card{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;color:var(--text);box-shadow:var(--shadow);transition:transform .16s,border-color .16s,box-shadow .16s;min-height:190px}
+.feature-card:hover{transform:translateY(-3px);border-color:#c9b3ff;box-shadow:var(--shadow-hover)}
+.feature-card .f-icon{font-size:1.4rem}
+.feature-card h3{font-size:1rem;font-weight:700}
+.feature-card p{color:var(--text-2);font-size:.85rem;flex:1}
+.feature-card .f-go{color:var(--violet);font-weight:700;font-size:.82rem}
+.view-all{color:var(--violet);font-weight:700;font-size:.86rem}
+.view-all:hover{text-decoration:underline}
+html[data-theme="dark"] .feature-card:hover{border-color:var(--violet)}

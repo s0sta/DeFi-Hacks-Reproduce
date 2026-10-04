@@ -35,7 +35,10 @@ window.initDatabase = function(){
   document.getElementById('search').oninput = render;
   yearSel.onchange = render;
   document.getElementById('type-filter').onchange = render;
-  const urlQ = new URLSearchParams(location.search).get('q');
+  const params = new URLSearchParams(location.search);
+  const urlQ = params.get('q');
   if (urlQ){ document.getElementById('search').value = urlQ; }
+  const urlT = params.get('type');
+  if (urlT){ document.getElementById('type-filter').value = urlT; }
   render();
 };

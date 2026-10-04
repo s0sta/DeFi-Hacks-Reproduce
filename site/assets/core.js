@@ -123,6 +123,23 @@ if (toggle) {
   }));
 }
 
+/* home collections: featured + latest */
+function renderHomeCollections(){
+  const feat = document.getElementById('featured-cards');
+  if (feat){
+    const top = D.filter(i => i.type === 'analysis').sort((a,b) => lossValue(b)-lossValue(a)).slice(0, 8);
+    feat.innerHTML = '';
+    top.forEach(i => feat.appendChild(card(i)));
+  }
+  const lat = document.getElementById('latest-cards');
+  if (lat){
+    const recent = [...D].sort((a,b) => (b.date||'').localeCompare(a.date||'')).slice(0, 6);
+    lat.innerHTML = '';
+    recent.forEach(i => lat.appendChild(card(i)));
+  }
+  // database deep-link: honor ?type=analysis from the "View all" link
+}
+
 /* footer year */
 function fillYear(){ const el = document.getElementById('foot-year'); if (el) el.textContent = new Date().getFullYear(); }
 
@@ -133,7 +150,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 
 /* boot per page */
 const BOOT = {
-  home(){ fillStats(); incidentOfWeek(); },
+  home(){ fillStats(); incidentOfWeek(); renderHomeCollections(); },
   database(){ window.initDatabase && window.initDatabase(); },
   intelligence(){ window.initIntelligence && window.initIntelligence(); },
   checklists(){ window.initChecklists && window.initChecklists(); },
