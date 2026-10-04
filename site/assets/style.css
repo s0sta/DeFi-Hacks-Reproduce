@@ -133,11 +133,14 @@ main{padding-bottom:80px}
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
 .chart-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
 .chart-block h3{font-size:.92rem;margin-bottom:14px}
-.bar-row{display:grid;grid-template-columns:140px 1fr 52px;gap:12px;align-items:center;margin-bottom:9px}
-.bar-label{font-size:.8rem;color:var(--text-2);text-align:right}
-.bar-track{height:9px;background:#eef0f6;border-radius:999px;overflow:hidden}
-.bar-fill{height:100%;background:var(--grad);border-radius:999px;min-width:2px}
-.bar-val{font-size:.76rem;color:var(--text-3)}
+.ana-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
+.sum-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
+.sum-num{font-size:1.5rem;font-weight:800;color:var(--violet);letter-spacing:-.02em}
+.sum-label{color:var(--text-3);font-size:.76rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:3px}
+.bar-row{margin-bottom:16px}
+.bar-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px}
+.bar-label{font-size:.86rem;font-weight:600;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar-val{font-size:.78rem;font-weight:700;color:var(--violet)}
 
 /* methodology + about */
 .meth-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}

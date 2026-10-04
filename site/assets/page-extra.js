@@ -44,22 +44,32 @@ window.initPatterns = function(){
 
 window.initAnalytics = function(){
   const classLoss={}, chainLoss={}, yearCount={};
+  let totalLoss = 0;
   D.forEach(i => {
     const lv = lossValue(i);
+    totalLoss += lv;
     classLoss[i.normClass] = (classLoss[i.normClass]||0)+lv;
     const ch = (i.chain||'Unknown').split(',')[0].trim();
     chainLoss[ch] = (chainLoss[ch]||0)+lv;
     const y=(i.date||'').slice(0,4); if (y) yearCount[y]=(yearCount[y]||0)+1;
   });
+  const topChain = Object.entries(chainLoss).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1])[0];
+  const topYear = Object.entries(yearCount).sort((a,b)=>b[1]-a[1])[0];
+  const s = document.getElementById('ana-summary');
+  if (s) s.innerHTML = `<div class="sum-card"><div class="sum-num">$${(totalLoss/1e9).toFixed(1)}B</div><div class="sum-label">Total reported losses</div></div>
+    <div class="sum-card"><div class="sum-num">${topChain ? esc(topChain[0]) : '—'}</div><div class="sum-label">Most-hit chain</div></div>
+    <div class="sum-card"><div class="sum-num">${topYear ? topYear[0] : '—'}</div><div class="sum-label">Busiest year (${topYear ? topYear[1] : 0} incidents)</div></div>`;
+
   function bars(id, entries, fmt){
     const max = Math.max(...entries.map(e=>e.v),1);
     document.getElementById(id).innerHTML = entries.map(e=>`
-      <div class="bar-row"><span class="bar-label">${esc(e.k)}</span>
-      <div class="bar-track"><div class="bar-fill" style="width:${(e.v/max*100).toFixed(1)}%"></div></div>
-      <span class="bar-val">${fmt(e.v)}</span></div>`).join('');
+      <div class="bar-row">
+        <div class="bar-top"><span class="bar-label">${esc(e.k)}</span><span class="bar-val">${fmt(e.v)}</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(e.v/max*100).toFixed(1)}%"></div></div>
+      </div>`).join('');
   }
-  bars('chart-class', Object.entries(classLoss).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10).map(e=>({k:e[0],v:e[1]})), v=>(v/1e6).toFixed(0)+'M');
-  bars('chart-chain', Object.entries(chainLoss).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10).map(e=>({k:e[0],v:e[1]})), v=>(v/1e6).toFixed(0)+'M');
+  bars('chart-class', Object.entries(classLoss).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10).map(e=>({k:e[0],v:e[1]})), v=>'$'+(v/1e6).toFixed(0)+'M');
+  bars('chart-chain', Object.entries(chainLoss).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10).map(e=>({k:e[0],v:e[1]})), v=>'$'+(v/1e6).toFixed(0)+'M');
   bars('chart-year', Object.entries(yearCount).sort((a,b)=>a[0]-b[0]).map(e=>({k:e[0],v:e[1]})), v=>v);
 };
 
