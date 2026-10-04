@@ -237,3 +237,14 @@ html[data-theme="dark"] .feature-card:hover{border-color:var(--violet)}
 .bar-label{font-size:.86rem;font-weight:600;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
 .sum-card:hover{text-decoration:none;border-color:#c9b3ff}
 .sum-card{display:block;color:var(--text)}
+
+/* theme compatibility for literal colors */
+html[data-theme="dark"] .week-card{border-color:rgba(139,92,246,.4)}
+html[data-theme="dark"] .card:hover{border-color:var(--violet)}
+html[data-theme="dark"] .feature-card:hover{border-color:var(--violet)}
+html[data-theme="dark"] .sum-card:hover{border-color:var(--violet)}
+html[data-theme="dark"] .btn.ghost{color:var(--text)}
+html[data-theme="dark"] .btn.ghost:hover{color:var(--violet)}
+html[data-theme="dark"] .controls input,html[data-theme="dark"] .controls select{color-scheme:dark}
+html{color-scheme:light}
+html[data-theme="dark"]{color-scheme:dark}

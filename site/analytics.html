@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{var s=localStorage.getItem('s0sta-theme');var d=s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=d;document.documentElement.style.colorScheme=d;}catch(e){}})();</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Loss Analytics — s0sta</title>
 <meta name="description" content="Reported losses per root-cause class and per chain, and incident frequency per year.">
@@ -15,8 +17,7 @@
 <header class="site-head"><div class="wrap">
   <nav class="nav">
     <a class="brand" href="index.html"><span class="bolt">⚡</span>s0sta<span class="slash">/</span>research</a>
-    <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">🌙</button>
-    <button class="nav-toggle" id="nav-toggle">☰</button>
+    <div class="nav-actions"><button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">🌙</button><button class="nav-toggle" id="nav-toggle">☰</button></div>
     <div class="nav-links">
       <a href="index.html" data-page="home">Home</a>
       <a href="database.html" data-page="database">Database</a>

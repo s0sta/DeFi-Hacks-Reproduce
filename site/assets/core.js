@@ -100,11 +100,10 @@ function incidentOfWeek(){
 (function(){
   const btn = document.getElementById('theme-toggle');
   if (!btn) return;
-  const saved = localStorage.getItem('s0sta-theme');
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  let theme = saved || (prefersDark ? 'dark' : 'light');
+  let theme = document.documentElement.dataset.theme || 'light';
   const apply = () => {
     document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
     btn.textContent = theme === 'dark' ? '☀️' : '🌙';
     localStorage.setItem('s0sta-theme', theme);
   };
