@@ -1,6 +1,7 @@
 # s0sta — DeFi Exploit Research Archive
 
-> 🌐 **Live website:** [s0sta.github.io/DeFi-Hacks-Reproduce](https://s0sta.github.io/DeFi-Hacks-Reproduce/) — searchable, filterable, with the leaderboard of the largest hacks.
+> 🌐 **Live website:** [s0sta.com/DeFi-Hacks-Reproduce](https://s0sta.com/DeFi-Hacks-Reproduce/) — searchable, filterable, with the leaderboard of the largest hacks.
+> (Mirror: [s0sta.github.io/DeFi-Hacks-Reproduce](https://s0sta.github.io/DeFi-Hacks-Reproduce/))
 
 > A professional research archive of **863 DeFi exploit incidents** (2017–2026): every incident documented with its date, chain, root-cause class, exploit mechanics with the real numbers, the transferable lesson, and the aftermath.
 
