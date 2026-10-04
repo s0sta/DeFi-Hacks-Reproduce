@@ -140,7 +140,11 @@ function renderHomeCollections(){
 }
 
 /* footer year */
-function fillYear(){ const el = document.getElementById('foot-year'); if (el) el.textContent = new Date().getFullYear(); }
+function fillYear(){
+  const y = new Date().getFullYear();
+  const el = document.getElementById('foot-year'); if (el) el.textContent = y;
+  const c = document.getElementById('copy-year'); if (c) c.textContent = y;
+}
 
 /* nav active state */
 document.querySelectorAll('.nav-links a').forEach(a => {

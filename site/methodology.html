@@ -3,14 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <script>(function(){try{var s=localStorage.getItem('s0sta-theme');var d=s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=d;document.documentElement.style.colorScheme=d;}catch(e){}})();</script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Methodology — s0sta</title>
-<meta name="description" content="How this research is done — the five-gate discipline, fork-proof falsification, the money-map method and the deployed-vs-repo delta.">
-<meta property="og:title" content="Methodology — s0sta">
-<meta property="og:description" content="How this research is done — the five-gate discipline, fork-proof falsification, the money-map method and the deployed-vs-repo delta.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://s0sta.com/DeFi-Hacks-Reproduce/methodology.html">
+<title>Audit Methodology — s0sta</title>
+<meta name="description" content="The full smart-contract audit process, step by step — from scoping and recon through fork-proof PoCs, falsification gates and the final report.">
+<meta property="og:title" content="Audit Methodology — s0sta">
+<meta property="og:description" content="The full smart-contract audit process, step by step.">
 <link rel="stylesheet" href="assets/style.css?v=6">
 </head>
 <body data-page="methodology">
@@ -31,22 +28,122 @@
     </div>
   </nav>
 </div></header>
+
 <main class="wrap">
-<div class="page-hero">
-  <span class="kicker">Methodology</span>
-  <h1>How the <span class="grad">research</span> is done</h1>
-  <p class="lead">The discipline behind every finding in this archive.</p>
-</div>
-<section class="section"><div class="meth-grid" id="meth-cards"></div></section>
+  <div class="page-hero">
+    <span class="kicker">Methodology</span>
+    <h1>The full smart-contract<br><span class="grad">audit process</span></h1>
+    <p class="lead">Every step of an audit, in order — from the first scope question to the final report. Each step explains what is done, how, why it matters, and what it produces.</p>
+  </div>
+
+  <section class="section">
+    <div class="meth-grid">
+
+      <div class="meth-card">
+        <div class="m-num">Step 1</div>
+        <h3>Scoping &amp; rules of engagement</h3>
+        <p><strong>What:</strong> Define the target: the exact commit/tag, the deployed addresses, the chain(s), the in-scope assets, and the program's impact list and severity definitions.<br><br>
+        <strong>How:</strong> Read the program page and prior audits; pin the code at the audited commit (worktree per tag).<br><br>
+        <strong>Why:</strong> Severity is judged against the program's OWN impact list — a "critical" elsewhere may be a Medium here.<br><br>
+        <strong>Produces:</strong> A one-page scope card: target, addresses, commit hash, rules, severity mapping.</p>
+      </div>
+
+      <div class="meth-card">
+        <div class="m-num">Step 2</div>
+        <h3>Reconnaissance — deployed vs. repo delta</h3>
+        <p><strong>What:</strong> Compare what was audited (or what the repo claims) with what is actually deployed.<br><br>
+        <strong>How:</strong> Pin the fork, fetch deployed bytecode, compile the audit-era source with the same solc settings, strip CBOR metadata, and diff. Establish a byte-identical control match first, then diff the rest.<br><br>
+        <strong>Why:</strong> The highest-yield class on live programs is "the audits reviewed something else" — guards removed, constants changed, upgrades deployed.<br><br>
+        <strong>Produces:</strong> A delta report: identical / metadata-only / real divergence, per contract.</p>
+      </div>
+
+      <div class="meth-card">
+        <div class="m-num">Step 3</div>
+        <h3>Plain-English vocabulary &amp; architecture map</h3>
+        <p><strong>What:</strong> Describe the protocol in plain English before reading code: every actor, every asset, every action, every fee.<br><br>
+        <strong>How:</strong> Walk the docs + interfaces; draw the module graph (who calls whom, who holds what).<br><br>
+        <strong>Why:</strong> If you cannot explain the system simply, you cannot tell where the assumptions hide — and assumptions are where the bugs live.<br><br>
+        <strong>Produces:</strong> A vocabulary sheet + module diagram used in the final report.</p>
+      </div>
+
+      <div class="meth-card">
+        <div class="m-num">Step 4</div>
+        <h3>The money map (accounting-first)</h3>
+        <p><strong>What:</strong> Enumerate every tracked total, every function that writes it, and the asymmetry table: value moved without a matching write; tracked in one branch only; never tracked.<br><br>
+        <strong>How:</strong> A table of (asset, state variable, writers, readers) + 5–15 invariants written as statements, e.g. "sum(userBalances) == totalSupply at all times".<br><br>
+        <strong>Why:</strong> Most real exploits are accounting desyncs, not missing modifiers.<br><br>
+        <strong>Produces:</strong> The invariant list — the backbone of the PoC phase.</p>
+      </div>
+
+      <div class="meth-card">
+        <div class="m-num">Step 5</div>
+        <h3>Twelve-lens manual review</h3>
+        <p><strong>What:</strong> Read the code through twelve lenses: accounting-desync, share/exchange-rate, temporal-cohort, liquidation-solvency, cross-chain-state, rounding-precision, ordering/MEV, DoS/griefing, access-trust, integration-assumptions, edge-states, flow-completeness.<br><br>
+        <strong>How:</strong> One pass per lens over the same code — never one blurry read.<br><br>
+        <strong>Why:</strong> Each lens catches a different bug family; a single read catches whichever family is loudest.<br><br>
+        <strong>Produces:</strong> Candidate leads, each tagged with its lens.</p>
+      </div>
+
+      <div class="meth-card">
+        <div class="m-num">Step 6</div>
+        <h3>Cohort attacks &amp; the Last-User-Out test</h3>
+        <p><strong>What:</strong> Attack the protocol's lifecycles in worst-case orderings, not its functions in isolation: everyone deposits, some attack mid-flow, everyone withdraws in the worst order.<br><br>
+        <strong>How:</strong> For each invariant, write the adversarial sequence that tries to break it; always include the Last-User-Out test — after all others exit, is the last user paid in full?<br><br>
+        <strong>Why:</strong> Sequenced flows reveal the desyncs single-call tests cannot see.<br><br>
+        <strong>Produces:</strong> A list of concrete attack scenarios to fork-prove.</p>
+      </div>
+
+      <div class="meth-card">
+        <div class="m-num">Step 7</div>
+        <h3>Fork-proof each lead (krait rules)</h3>
+        <p><strong>What:</strong> Prove every candidate on a mainnet fork of the REAL deployed contracts — never mocks.<br><br>
+        <strong>How:</strong> The PoC must assert HARM (victim balance before/after), not mechanism. Then the falsification gate: mutate the defective line to its correct form — if the exploit still succeeds, the PoC is theater and the lead is demoted. Tag every run: [POC-PASS] / [POC-UNPINNED] / [POC-FAIL].<br><br>
+        <strong>Why:</strong> Green tests are hypotheses; pinned tests are evidence. This is what separates a finding from a story.<br><br>
+        <strong>Produces:</strong> For each real finding: a pinned fork PoC with before/after balances.</p>
+      </div>
+
+      <div class="meth-card">
+        <div class="m-num">Step 8</div>
+        <h3>The five gates (no false positives)</h3>
+        <p><strong>What:</strong> Every surviving lead must pass all five gates before being reported:<br>
+        <strong>1.</strong> Exploit economics derived by hand, twice, with a named victim and gainer.<br>
+        <strong>2.</strong> Storage/offset claims verified against the compiler's conventions.<br>
+        <strong>3.</strong> Live reachability on the deployed in-scope asset — no admin precondition, no future deploy.<br>
+        <strong>4.</strong> Prior-art honesty, including unpublished prior submissions.<br>
+        <strong>5.</strong> Honest severity per the program's own impact list.<br><br>
+        <strong>Why:</strong> One false positive destroys a reputation faster than ten true findings build it.<br><br>
+        <strong>Produces:</strong> A gate pass/fail table per lead.</p>
+      </div>
+
+      <div class="meth-card">
+        <div class="m-num">Step 9</div>
+        <h3>Severity &amp; impact calibration</h3>
+        <p><strong>What:</strong> Assign severity from the economics, not the mechanism: how much a real victim loses, how easily, how recoverable.<br><br>
+        <strong>How:</strong> Map to the program's tiers (typically Critical $50K–$2M+ / High $10–50K / Medium $2–10K / Low $0.5–2K) and state the worst realistic outcome, not the theoretical ceiling.<br><br>
+        <strong>Why:</strong> Overclaiming severity is the fastest route to an invalid verdict.<br><br>
+        <strong>Produces:</strong> A severity recommendation per finding with the loss math shown.</p>
+      </div>
+
+      <div class="meth-card">
+        <div class="m-num">Step 10</div>
+        <h3>The report</h3>
+        <p><strong>What:</strong> Write each finding as a self-contained case: Brief/Intro · Vulnerability Details (root cause, the exact lines, why the guard fails) · Impact (the named victim, the loss math, worst realistic outcome) · References (prior art, similar incidents from this archive).<br><br>
+        <strong>How:</strong> Follow the platform's template exactly; include the pinned PoC; state the verification status (which of the five gates passed) in one line.<br><br>
+        <strong>Why:</strong> Triage is busy — a report that reads like evidence gets paid.<br><br>
+        <strong>Produces:</strong> The submission-ready report.</p>
+      </div>
+
+    </div>
+  </section>
 </main>
+
 <footer class="site-foot"><div class="wrap foot-inner">
   <div><span class="f-brand">⚡ s0sta/research</span></div>
   <div class="foot-links"><a href="about.html">About</a><a href="methodology.html">Methodology</a><a href="https://github.com/s0sta/DeFi-Hacks-Reproduce">Repository</a></div>
-  <div class="f-meta">© <span id="foot-year"></span> s0sta · DeFi Exploit Research Archive</div>
+  <div class="f-meta">© <span id="foot-year"></span> s0sta · All rights reserved</div>
 </div></footer>
 
 <script src="assets/data.js?v=6"></script>
-<script src="assets/page-extra.js?v=6"></script>
 <script src="assets/core.js?v=6"></script>
 </body>
 </html>
