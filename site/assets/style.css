@@ -29,7 +29,7 @@ header.site-head{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9
 .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1rem;color:var(--text)}
 .brand .bolt{width:34px;height:34px;border-radius:11px;background:var(--grad);display:grid;place-items:center;font-size:.95rem;color:#fff;box-shadow:0 6px 16px -6px rgba(109,40,217,.5)}
 .brand .slash{color:var(--cyan)}
-.nav-links{display:flex;gap:2px;align-items:center}
+.nav-links{display:flex;gap:2px;align-items:center;margin-left:auto}
 .nav-links a{color:var(--text-2);font-weight:600;font-size:.88rem;padding:8px 14px;border-radius:10px;transition:all .15s}
 .nav-links a:hover{color:var(--violet);background:var(--violet-soft)}
 .nav-links a.active{color:#fff;background:var(--grad);box-shadow:0 4px 12px -4px rgba(109,40,217,.5)}
