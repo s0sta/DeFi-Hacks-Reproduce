@@ -8,9 +8,10 @@ window.initIntelligence = function(){
   const el = document.getElementById('intel-cards');
   rows.forEach(([c,n]) => {
     const lm = losses[c]||0;
-    el.innerHTML += `<div class="intel-card"><div class="intel-head"><span class="intel-name">${esc(c)}</span><span class="intel-count">${n}</span></div>
+    el.innerHTML += `<a class="intel-card" href="database.html?q=${encodeURIComponent(c)}" title="Open the ${esc(c)} incidents">
+      <div class="intel-head"><span class="intel-name">${esc(c)}</span><span class="intel-count">${n} →</span></div>
       <div class="intel-loss">${lm >= 1e6 ? '$'+(lm/1e6).toFixed(0)+'M' : lm ? '$'+Math.round(lm/1e3)+'K' : '—'} reported</div>
-      <div class="meter"><div class="meter-fill" style="width:${Math.min(100, n/rows[0][1]*100)}%"></div></div></div>`;
+      <div class="meter"><div class="meter-fill" style="width:${Math.min(100, n/rows[0][1]*100)}%"></div></div></a>`;
   });
 };
 

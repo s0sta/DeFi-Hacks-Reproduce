@@ -288,3 +288,9 @@ html[data-theme="dark"] .prose p,
 html[data-theme="dark"] .prose li{color:var(--text-2)}
 
 html[data-theme="dark"] .card .excerpt{background:none}
+
+/* intelligence cards are links */
+a.intel-card{display:block;color:var(--text);transition:transform .15s,border-color .15s,box-shadow .15s}
+a.intel-card:hover{transform:translateY(-2px);border-color:var(--violet);box-shadow:var(--shadow-hover);text-decoration:none}
+a.intel-card:hover .intel-name{color:var(--violet)}
+html[data-theme="dark"] a.intel-card:hover{border-color:var(--violet)}
