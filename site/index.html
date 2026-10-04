@@ -15,6 +15,7 @@
 <header class="site-head"><div class="wrap">
   <nav class="nav">
     <a class="brand" href="index.html"><span class="bolt">⚡</span>s0sta<span class="slash">/</span>research</a>
+    <button class="nav-toggle" id="nav-toggle">☰</button>
     <div class="nav-links">
       <a href="index.html" data-page="home">Home</a>
       <a href="database.html" data-page="database">Database</a>
@@ -50,10 +51,10 @@
     <a class="link-row" href="methodology.html"><div><div class="l-name">Methodology</div><div class="l-desc">How s0sta audits</div></div><span class="l-go">→</span></a>
   </div>
   <div class="panel"><h2>At a glance</h2><p class="panel-sub">The archive in numbers.</p>
-    <div class="link-row"><div class="l-name">Deep-dive analyses</div><span class="l-go">119</span></div>
+    <div class="link-row"><div class="l-name">Deep-dive analyses</div><span class="l-go" id="glance-analyses">—</span></div>
     <div class="link-row"><div class="l-name">Landmark hacks ranked</div><span class="l-go">Top 60</span></div>
-    <div class="link-row"><div class="l-name">Bug patterns</div><span class="l-go">10</span></div>
-    <div class="link-row"><div class="l-name">Protocol categories</div><span class="l-go">8</span></div>
+    <div class="link-row"><div class="l-name">Bug patterns</div><span class="l-go" id="glance-patterns">—</span></div>
+    <div class="link-row"><div class="l-name">Protocol categories</div><span class="l-go" id="glance-cats">—</span></div>
   </div>
 </div>
 </main>
@@ -67,6 +68,7 @@
   <div class="modal-badges" id="modal-badges"></div><h3 id="modal-title"></h3><div class="modal-body" id="modal-body"></div></div>
 </div>
 <script src="assets/data.js"></script>
+<script src="assets/features.js"></script>
 <script src="assets/core.js"></script>
 </body>
 </html>

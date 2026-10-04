@@ -26,7 +26,7 @@ a:hover{text-decoration:underline}
 /* ---------- layout ---------- */
 .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
 header.site-head{position:sticky;top:0;z-index:40;background:rgba(7,9,13,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:16px 0}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.02rem;letter-spacing:.01em;color:var(--text)}
 .brand .bolt{width:34px;height:34px;border-radius:10px;background:var(--grad);display:grid;place-items:center;font-size:1rem;color:#fff}
 .brand .slash{color:var(--cyan)}
@@ -37,7 +37,7 @@ header.site-head{position:sticky;top:0;z-index:40;background:rgba(7,9,13,.82);ba
 .nav-links a.active:hover{text-decoration:none}
 
 /* ---------- page hero ---------- */
-.page-hero{padding:64px 0 40px}
+.page-hero{padding:56px 0 36px}
 .page-hero .kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(124,92,255,.12);border:1px solid rgba(124,92,255,.35);color:#b7a6ff;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:18px}
 .page-hero h1{font-size:clamp(2rem,4.4vw,3.1rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
 .page-hero .lead{color:var(--text-2);font-size:1.05rem;max-width:640px;margin-top:14px}
@@ -69,9 +69,9 @@ header.site-head{position:sticky;top:0;z-index:40;background:rgba(7,9,13,.82);ba
 
 /* ---------- sections ---------- */
 main{padding-bottom:90px}
-.section{padding-top:34px}
+.section{padding-top:38px}
 .section-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:22px}
-.section-head h2{font-size:1.45rem;font-weight:800;letter-spacing:-.02em}
+.section-head h2{font-size:1.4rem;font-weight:800;letter-spacing:-.02em}
 .section-head p{color:var(--text-3);font-size:.9rem}
 
 /* controls */
@@ -86,10 +86,10 @@ main{padding-bottom:90px}
 
 /* cards grid */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
-.card{background:linear-gradient(165deg,var(--surface),var(--surface-2));border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;display:flex;flex-direction:column;gap:10px}
+.card{min-height:190px;background:linear-gradient(165deg,var(--surface),var(--surface-2));border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;display:flex;flex-direction:column;gap:10px}
 .card:hover{transform:translateY(-3px);border-color:var(--violet);box-shadow:0 14px 34px rgba(124,92,255,.14)}
 .card h3{font-size:1.02rem;font-weight:700;letter-spacing:-.01em}
-.card .excerpt{color:var(--text-2);font-size:.87rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card .excerpt{flex:1;color:var(--text-2);font-size:.87rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .badges{display:flex;gap:6px;flex-wrap:wrap}
 .badge{font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:999px;letter-spacing:.02em}
 .badge.class{background:rgba(124,92,255,.16);color:#b7a6ff}
@@ -164,9 +164,18 @@ footer.site-foot{border-top:1px solid var(--border);padding:30px 0 40px;margin-t
 .foot-links a{color:var(--text-2);font-size:.84rem;margin-left:18px;font-weight:600}
 .foot-links a:hover{color:var(--text)}
 
+/* hamburger */
+.nav-toggle{display:none;background:var(--surface);border:1px solid var(--border);color:var(--text);width:40px;height:40px;border-radius:10px;cursor:pointer;font-size:1.1rem}
+@media(max-width:900px){
+  .nav-toggle{display:block}
+  .nav-links{display:none;position:absolute;top:72px;left:16px;right:16px;background:var(--bg-soft);border:1px solid var(--border);border-radius:14px;padding:10px;flex-direction:column;gap:2px;box-shadow:var(--shadow)}
+  .nav-links.open{display:flex}
+  .nav-links a{display:block;padding:11px 14px}
+}
 @media(max-width:720px){
-  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .hero-stats{grid-template-columns:repeat(2,1fr);gap:10px}
   .home-grid{grid-template-columns:1fr}
-  .bar-row{grid-template-columns:110px 1fr 48px}
-  .nav-links{display:none}
+  .bar-row{grid-template-columns:100px 1fr 44px}
+  .page-hero{padding:48px 0 30px}
+  .controls input,.controls select{min-width:100%}
 }

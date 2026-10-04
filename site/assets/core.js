@@ -72,13 +72,15 @@ function bindModal(){
 
 /* stats (home) */
 function fillStats(){
-  const ids = ['stat-incidents','stat-analyses','stat-years','stat-classes'];
-  if (!document.getElementById(ids[0])) return;
   const years = new Set(); D.forEach(i => { const y = (i.date||'').slice(0,4); if (y) years.add(y); });
-  document.getElementById(ids[0]).textContent = D.length;
-  document.getElementById(ids[1]).textContent = D.filter(i => i.type === 'analysis').length;
-  document.getElementById(ids[2]).textContent = years.size;
-  document.getElementById(ids[3]).textContent = new Set(D.map(i => i.normClass)).size;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  set('stat-incidents', D.length);
+  set('stat-analyses', D.filter(i => i.type === 'analysis').length);
+  set('stat-years', years.size);
+  set('stat-classes', new Set(D.map(i => i.normClass)).size);
+  set('glance-analyses', D.filter(i => i.type === 'analysis').length);
+  set('glance-cats', (window.CHECKLISTS || []).length);
+  set('glance-patterns', (window.PATTERNS10 || []).length);
 }
 
 /* incident of the week (home) */
@@ -92,6 +94,17 @@ function incidentOfWeek(){
   slot.innerHTML = `<div class="week-tag">Incident of the Week</div><h3>${esc(pick.protocol)}</h3>
     <p>${esc((pick.mechanics||'').slice(0, 300))}…</p>
     <a class="btn" href="database.html?q=${encodeURIComponent(pick.protocol)}">Read the analysis</a>`;
+}
+
+/* hamburger */
+const toggle = document.getElementById('nav-toggle');
+if (toggle) {
+  toggle.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.remove('open');
+  }));
 }
 
 /* footer year */
