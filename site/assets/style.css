@@ -225,3 +225,15 @@ html[data-theme="dark"] .meter,html[data-theme="dark"] .bar-track{background:#0e
 .view-all{color:var(--violet);font-weight:700;font-size:.86rem}
 .view-all:hover{text-decoration:underline}
 html[data-theme="dark"] .feature-card:hover{border-color:var(--violet)}
+
+/* analytics bar links */
+.bar-link{display:block;margin-bottom:16px;color:inherit;border-radius:10px;padding:6px 8px;margin-left:-8px;margin-right:-8px;transition:background .15s}
+.bar-link:hover{background:var(--violet-soft);text-decoration:none}
+.bar-link:hover .bar-label{color:var(--violet)}
+.bar-link:hover .bar-fill{filter:brightness(1.15)}
+.bar-arrow{color:var(--violet);font-weight:700;font-size:.78rem;opacity:0;transition:opacity .15s;transform:translateX(-2px)}
+.bar-link:hover .bar-arrow{opacity:1;transform:translateX(0)}
+.bar-top{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.bar-label{font-size:.86rem;font-weight:600;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.sum-card:hover{text-decoration:none;border-color:#c9b3ff}
+.sum-card{display:block;color:var(--text)}

@@ -57,20 +57,21 @@ window.initAnalytics = function(){
   const topYear = Object.entries(yearCount).sort((a,b)=>b[1]-a[1])[0];
   const s = document.getElementById('ana-summary');
   if (s) s.innerHTML = `<div class="sum-card"><div class="sum-num">$${(totalLoss/1e9).toFixed(1)}B</div><div class="sum-label">Total reported losses</div></div>
-    <div class="sum-card"><div class="sum-num">${topChain ? esc(topChain[0]) : '—'}</div><div class="sum-label">Most-hit chain</div></div>
+    <a class="sum-card" href="${topChain ? 'database.html?q=' + encodeURIComponent(topChain[0]) : '#'}"><div class="sum-num">${topChain ? esc(topChain[0]) : '—'}</div><div class="sum-label">Most-hit chain</div></a>
     <div class="sum-card"><div class="sum-num">${topYear ? topYear[0] : '—'}</div><div class="sum-label">Busiest year (${topYear ? topYear[1] : 0} incidents)</div></div>`;
 
-  function bars(id, entries, fmt){
+  function bars(id, entries, fmt, hrefOf){
     const max = Math.max(...entries.map(e=>e.v),1);
     document.getElementById(id).innerHTML = entries.map(e=>`
-      <div class="bar-row">
-        <div class="bar-top"><span class="bar-label">${esc(e.k)}</span><span class="bar-val">${fmt(e.v)}</span></div>
+      <a class="bar-link" href="${hrefOf(e)}">
+        <div class="bar-top"><span class="bar-label">${esc(e.k)}</span><span class="bar-val">${fmt(e.v)}</span><span class="bar-arrow">→</span></div>
         <div class="bar-track"><div class="bar-fill" style="width:${(e.v/max*100).toFixed(1)}%"></div></div>
-      </div>`).join('');
+      </a>`).join('');
   }
-  bars('chart-class', Object.entries(classLoss).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10).map(e=>({k:e[0],v:e[1]})), v=>'$'+(v/1e6).toFixed(0)+'M');
-  bars('chart-chain', Object.entries(chainLoss).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10).map(e=>({k:e[0],v:e[1]})), v=>'$'+(v/1e6).toFixed(0)+'M');
-  bars('chart-year', Object.entries(yearCount).sort((a,b)=>a[0]-b[0]).map(e=>({k:e[0],v:e[1]})), v=>v);
+  const q = (v) => 'database.html?q=' + encodeURIComponent(v);
+  bars('chart-class', Object.entries(classLoss).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10).map(e=>({k:e[0],v:e[1]})), v=>'$'+(v/1e6).toFixed(0)+'M', e=>q(e.k));
+  bars('chart-chain', Object.entries(chainLoss).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,10).map(e=>({k:e[0],v:e[1]})), v=>'$'+(v/1e6).toFixed(0)+'M', e=>q(e.k));
+  bars('chart-year', Object.entries(yearCount).sort((a,b)=>a[0]-b[0]).map(e=>({k:e[0],v:e[1]})), v=>v, e=>'database.html?year='+encodeURIComponent(e.k));
 };
 
 window.initMethodology = function(){

@@ -40,5 +40,7 @@ window.initDatabase = function(){
   if (urlQ){ document.getElementById('search').value = urlQ; }
   const urlT = params.get('type');
   if (urlT){ document.getElementById('type-filter').value = urlT; }
+  const urlY = params.get('year');
+  if (urlY){ yearSel.value = urlY; }
   render();
 };
