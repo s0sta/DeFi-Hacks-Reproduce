@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — s0sta</title>
+<meta name="description" content="About the DeFi Exploit Research Archive: compiled and maintained by s0sta.">
+<meta property="og:title" content="About — s0sta">
+<meta property="og:description" content="About the DeFi Exploit Research Archive: compiled and maintained by s0sta.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://s0sta.com/DeFi-Hacks-Reproduce/about.html">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="about">
+<header class="site-head"><div class="wrap">
+  <nav class="nav">
+    <a class="brand" href="index.html"><span class="bolt">⚡</span>s0sta<span class="slash">/</span>research</a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="database.html" data-page="database">Database</a>
+      <a href="intelligence.html" data-page="intelligence">Intelligence</a>
+      <a href="checklists.html" data-page="checklists">Checklists</a>
+      <a href="patterns.html" data-page="patterns">Patterns</a>
+      <a href="analytics.html" data-page="analytics">Analytics</a>
+      <a href="methodology.html" data-page="methodology">Methodology</a>
+      <a href="about.html" data-page="about">About</a>
+    </div>
+  </nav>
+</div></header>
+<main class="wrap">
+<div class="page-hero">
+  <span class="kicker">About</span>
+  <h1>About the <span class="grad">archive</span></h1>
+  <p class="lead">Compiled and maintained by s0sta.</p>
+</div>
+<section class="section"><div class="prose">
+  <p>Each entry documents a real loss event: the vulnerable contract's flaw, the attacker's flow with the actual numbers, and the transferable lesson for auditors and bug hunters.</p>
+  <h3>How to use it</h3>
+  <ul>
+    <li><strong>By class</strong> — open <a href="intelligence.html">Intelligence</a> and read the incident cluster for a root-cause class; the pattern emerges fast.</li>
+    <li><strong>By time</strong> — the database is time-ordered: access-control and reentrancy dominated 2021-22, oracle and flash-loan attacks peaked in 2022-23, and recent years shifted to novel protocol-logic flaws.</li>
+    <li><strong>Before an audit</strong> — pick the protocol category in <a href="checklists.html">Checklists</a> and use the lessons as your first audit checklist.</li>
+  </ul>
+  <h3>Methodology</h3>
+  <p>Every finding follows the discipline described in <a href="methodology.html">Methodology</a>: hand-derived economics, live-reachability proof, prior-art honesty and honest severity.</p>
+</div></section>
+</main>
+<footer class="site-foot"><div class="wrap foot-inner">
+  <div><span class="f-brand">⚡ s0sta/research</span></div>
+  <div class="foot-links"><a href="about.html">About</a><a href="methodology.html">Methodology</a><a href="https://github.com/s0sta/DeFi-Hacks-Reproduce">Repository</a></div>
+  <div class="f-meta">© <span id="foot-year"></span> s0sta · DeFi Exploit Research Archive</div>
+</div></footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/core.js"></script>
+</body>
+</html>

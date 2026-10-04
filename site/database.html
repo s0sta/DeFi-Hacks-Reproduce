@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Incident Database — s0sta</title>
+<meta name="description" content="Search and filter 832 documented DeFi exploit incidents by protocol, root-cause class, chain and year.">
+<meta property="og:title" content="Incident Database — s0sta">
+<meta property="og:description" content="Search and filter 832 documented DeFi exploit incidents by protocol, root-cause class, chain and year.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://s0sta.com/DeFi-Hacks-Reproduce/database.html">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="database">
+<header class="site-head"><div class="wrap">
+  <nav class="nav">
+    <a class="brand" href="index.html"><span class="bolt">⚡</span>s0sta<span class="slash">/</span>research</a>
+    <div class="nav-links">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="database.html" data-page="database">Database</a>
+      <a href="intelligence.html" data-page="intelligence">Intelligence</a>
+      <a href="checklists.html" data-page="checklists">Checklists</a>
+      <a href="patterns.html" data-page="patterns">Patterns</a>
+      <a href="analytics.html" data-page="analytics">Analytics</a>
+      <a href="methodology.html" data-page="methodology">Methodology</a>
+      <a href="about.html" data-page="about">About</a>
+    </div>
+  </nav>
+</div></header>
+<main class="wrap">
+<div class="page-hero">
+  <span class="kicker">Database</span>
+  <h1>Incident <span class="grad">Database</span></h1>
+  <p class="lead">Every documented loss event with its root cause, mechanics and lesson.</p>
+</div>
+<section class="section">
+  <div class="section-head"><h2>All incidents</h2><p id="result-count"></p></div>
+  <div class="controls">
+    <input type="search" id="search" placeholder="Search protocol, class, chain…" autocomplete="off">
+    <select id="year-filter"><option value="">All years</option></select>
+    <select id="type-filter"><option value="">All types</option><option value="incident">Incidents</option><option value="analysis">Deep-dive analyses</option></select>
+  </div>
+  <div class="chips" id="class-chips"></div>
+  <div class="grid" id="cards"></div>
+</section>
+</main>
+<footer class="site-foot"><div class="wrap foot-inner">
+  <div><span class="f-brand">⚡ s0sta/research</span></div>
+  <div class="foot-links"><a href="about.html">About</a><a href="methodology.html">Methodology</a><a href="https://github.com/s0sta/DeFi-Hacks-Reproduce">Repository</a></div>
+  <div class="f-meta">© <span id="foot-year"></span> s0sta · DeFi Exploit Research Archive</div>
+</div></footer>
+<div class="modal-backdrop" id="modal" hidden>
+  <div class="modal"><button class="modal-close" id="modal-close">✕</button>
+  <div class="modal-badges" id="modal-badges"></div><h3 id="modal-title"></h3><div class="modal-body" id="modal-body"></div></div>
+</div>
+<script src="assets/data.js"></script>
+<script src="assets/page-database.js"></script>
+<script src="assets/core.js"></script>
+</body>
+</html>
