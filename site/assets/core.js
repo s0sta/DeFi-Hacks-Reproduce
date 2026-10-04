@@ -96,6 +96,22 @@ function incidentOfWeek(){
     <a class="btn" href="database.html?q=${encodeURIComponent(pick.protocol)}">Read the analysis</a>`;
 }
 
+/* theme toggle */
+(function(){
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  const saved = localStorage.getItem('s0sta-theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let theme = saved || (prefersDark ? 'dark' : 'light');
+  const apply = () => {
+    document.documentElement.dataset.theme = theme;
+    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('s0sta-theme', theme);
+  };
+  apply();
+  btn.addEventListener('click', () => { theme = theme === 'light' ? 'dark' : 'light'; apply(); });
+})();
+
 /* hamburger */
 const toggle = document.getElementById('nav-toggle');
 if (toggle) {
