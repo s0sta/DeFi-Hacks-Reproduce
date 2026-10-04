@@ -45,7 +45,7 @@ function badge(i){
 function card(i){
   const el = document.createElement('div');
   el.className = 'card';
-  el.innerHTML = `<h3>${esc(i.protocol)}</h3><div class="badges">${badge(i)}</div><p class="excerpt">${esc((i.mechanics||'').slice(0, 200))}…</p>`;
+  el.innerHTML = `<h3>${esc(i.protocol)}</h3><div class="badges">${badge(i)}</div><p class="excerpt">${esc(i.mechanics || '')}</p>`;
   el.onclick = () => open(i);
   return el;
 }

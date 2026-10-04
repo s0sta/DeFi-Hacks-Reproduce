@@ -95,7 +95,7 @@ main{padding-bottom:80px}
 .card{min-height:185px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;cursor:pointer;transition:transform .16s,border-color .16s,box-shadow .16s;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow)}
 .card:hover{transform:translateY(-3px);border-color:#c9b3ff;box-shadow:var(--shadow-hover)}
 .card h3{font-size:1rem;font-weight:700;letter-spacing:-.01em}
-.card .excerpt{color:var(--text-2);font-size:.86rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+.card .excerpt{color:var(--text-2);font-size:.88rem;line-height:1.6;background:none;flex:1;overflow-wrap:break-word}
 .badges{display:flex;gap:6px;flex-wrap:wrap}
 .badge{font-size:.74rem;font-weight:700;padding:5px 11px;border-radius:6px;letter-spacing:.02em}
 .badge.class{background:var(--violet-soft);color:var(--violet)}
@@ -286,3 +286,5 @@ html[data-theme="dark"] .pat-why,
 html[data-theme="dark"] .meth-card p,
 html[data-theme="dark"] .prose p,
 html[data-theme="dark"] .prose li{color:var(--text-2)}
+
+html[data-theme="dark"] .card .excerpt{background:none}
