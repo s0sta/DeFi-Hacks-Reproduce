@@ -133,14 +133,24 @@ main{padding-bottom:80px}
 .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
 .chart-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
 .chart-block h3{font-size:.92rem;margin-bottom:14px}
-.ana-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:26px}
-.sum-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
-.sum-num{font-size:1.5rem;font-weight:800;color:var(--violet);letter-spacing:-.02em}
-.sum-label{color:var(--text-3);font-size:.76rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:3px}
-.bar-row{margin-bottom:16px}
-.bar-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px}
-.bar-label{font-size:.86rem;font-weight:600;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.bar-val{font-size:.78rem;font-weight:700;color:var(--violet)}
+.ana-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}
+.sum-card{display:flex;flex-direction:column;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);color:var(--text);transition:transform .15s,border-color .15s,box-shadow .15s}
+.sum-card:hover{transform:translateY(-2px);border-color:var(--violet);box-shadow:var(--shadow-hover);text-decoration:none}
+.sum-icon{font-size:1.3rem}
+.sum-num{font-size:1.6rem;font-weight:800;color:var(--violet);letter-spacing:-.02em}
+.sum-label{color:var(--text-2);font-size:.82rem;font-weight:600}
+.sum-go{color:var(--violet);font-size:.78rem;font-weight:700;margin-top:6px}
+html[data-theme="dark"] .sum-card:hover{border-color:var(--violet)}
+.bar-link{display:block;margin-bottom:15px;border-radius:12px;padding:10px 12px;margin-left:-12px;margin-right:-12px;transition:background .15s}
+.bar-link:hover{background:var(--violet-soft);text-decoration:none}
+.bar-top{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.bar-rank{min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;background:var(--violet-soft);color:var(--violet);font-size:.72rem;font-weight:800;border-radius:7px}
+.bar-label{flex:1;font-size:.88rem;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar-val{font-size:.8rem;font-weight:800;color:var(--violet);background:var(--violet-soft);padding:3px 10px;border-radius:999px}
+.bar-track{height:12px;background:#eef0f6;border-radius:999px;overflow:hidden}
+.bar-fill{height:100%;background:var(--grad);border-radius:999px;min-width:4px;transition:filter .15s}
+.bar-link:hover .bar-fill{filter:brightness(1.12)}
+html[data-theme="dark"] .bar-track{background:#0e1320}
 
 /* methodology + about */
 .meth-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
@@ -227,14 +237,6 @@ html[data-theme="dark"] .meter,html[data-theme="dark"] .bar-track{background:#0e
 html[data-theme="dark"] .feature-card:hover{border-color:var(--violet)}
 
 /* analytics bar links */
-.bar-link{display:block;margin-bottom:16px;color:inherit;border-radius:10px;padding:6px 8px;margin-left:-8px;margin-right:-8px;transition:background .15s}
-.bar-link:hover{background:var(--violet-soft);text-decoration:none}
-.bar-link:hover .bar-label{color:var(--violet)}
-.bar-link:hover .bar-fill{filter:brightness(1.15)}
-.bar-arrow{color:var(--violet);font-weight:700;font-size:.78rem;opacity:0;transition:opacity .15s;transform:translateX(-2px)}
-.bar-link:hover .bar-arrow{opacity:1;transform:translateX(0)}
-.bar-top{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
-.bar-label{font-size:.86rem;font-weight:600;color:var(--text-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
 .sum-card:hover{text-decoration:none;border-color:#c9b3ff}
 .sum-card{display:block;color:var(--text)}
 
