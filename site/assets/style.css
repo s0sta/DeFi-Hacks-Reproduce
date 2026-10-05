@@ -180,7 +180,9 @@ html[data-theme="dark"] .bar-track{background:#0e1320}
 /* footer */
 footer.site-foot{border-top:1px solid var(--border);background:var(--surface);padding:26px 0 34px;margin-top:50px}
 .foot-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.f-brand{font-weight:800}
+.f-brand{font-weight:800;display:inline-flex;align-items:center;gap:8px}
+.f-brand img{width:28px;height:28px;display:block}
+.f-brand .slash{color:var(--cyan)}
 .f-meta{color:var(--text-3);font-size:.8rem}
 .foot-links a{color:var(--text-2);font-size:.83rem;margin-left:16px;font-weight:600}
 .foot-links a:hover{color:var(--violet)}
