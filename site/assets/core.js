@@ -42,11 +42,24 @@ function badge(i){
   if (i.type === 'analysis') b += `<span class="badge analysis">deep-dive</span>`;
   return b;
 }
+
+// Every incident that has been published as a post on X carries a `tweet` URL. Render it
+// as a link so a reader can jump from the finding to the published analysis. Incidents
+// without one simply show nothing - no broken or empty links.
+function xlink(i, cls){
+  if (!i || !i.tweet) return '';
+  return `<a class="xlink ${cls||''}" href="${esc(i.tweet)}" target="_blank" rel="noopener">`
+       + `Read the post on X &rarr;</a>`;
+}
+
 function card(i){
   const el = document.createElement('div');
   el.className = 'card';
-  el.innerHTML = `<h3>${esc(i.protocol)}</h3><div class="badges">${badge(i)}</div><p class="excerpt">${esc(i.mechanics || '')}</p>`;
+  el.innerHTML = `<h3>${esc(i.protocol)}</h3><div class="badges">${badge(i)}</div>`
+               + `<p class="excerpt">${esc(i.mechanics || '')}</p>` + xlink(i);
   el.onclick = () => open(i);
+  const a = el.querySelector('.xlink');
+  if (a) a.onclick = (ev) => ev.stopPropagation();   // link opens X, not the modal
   return el;
 }
 function open(i){
@@ -58,7 +71,8 @@ function open(i){
   document.getElementById('modal-body').innerHTML =
     (i.mechanics ? `<h4>Mechanics</h4><p class="mech">${esc(i.mechanics)}</p>` : '') +
     (i.lesson ? `<h4>Lesson</h4><p>${esc(i.lesson)}</p>` : '') +
-    (i.aftermath ? `<h4>Aftermath</h4><p>${esc(i.aftermath)}</p>` : '');
+    (i.aftermath ? `<h4>Aftermath</h4><p>${esc(i.aftermath)}</p>` : '') +
+    xlink(i, 'modal-xlink');
   document.body.style.overflow = 'hidden';
 }
 function closeModal(){ const m = document.getElementById('modal'); if (m) m.hidden = true; document.body.style.overflow = ''; }
